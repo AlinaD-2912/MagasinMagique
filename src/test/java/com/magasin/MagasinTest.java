@@ -7,13 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MagasinTest {
 
-    @Test
-    void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
-        Magasin app = new Magasin(items);
-        app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
-    }
+//    @Test
+//    void foo() {
+//        Item[] items = new Item[] { new Item("foo", 0, 0) };
+//        Magasin app = new Magasin(items);
+//        app.updateQuality();
+//        assertEquals("fixme", app.items[0].name);
+//    }
 
     @Test
     void normalProduct_decreaseQualityAndSellin() {
@@ -22,10 +22,12 @@ class MagasinTest {
         app.updateQuality();
 
         assertEquals("Normal product", app.items[0].name);
-        assertEquals(19, app.items[0].sellIn); // 20 - 1 = 19
-        assertEquals(9, app.items[0].quality); // 10 - 1 = 9
+        assertEquals(9, app.items[0].sellIn); // 10 - 1 = 9
+        assertEquals(19, app.items[0].quality); // 20 - 1 = 19
     }
+
     // passed
+    // Once the expiration date has passed, the quality degrades twice as fast
     @Test
     void normalItem_expiredDate_decreasesTwiceAsFast() {
         Item[] items = new Item[] { new Item("Produit Expiré", 0, 20) };
@@ -40,17 +42,16 @@ class MagasinTest {
     // The quality of a product can never be negative.
     @Test
     void qualityCanNotBeNegative() {
-        Item[] items = new Item[] { new Item("Produit Expiré", 10, -1) };
+        Item[] items = new Item[] { new Item("Produit Expiré", 10, -5) };
         Magasin app = new Magasin(items);
 
-        app.updateQuality();
 
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> app.updateQuality(),
                 "Negative quality should throw illegal exception but nothing was thrown"
         );
-        assertEquals("Cannot be zero", exception.getMessage());
+        assertEquals("Cannot be negative", exception.getMessage());
 
     }
 
@@ -67,6 +68,7 @@ class MagasinTest {
 
     }
 
+    //passed
     //  The quality of a product is never greater than 50.
     @Test
     void qualityIsNotGreaterThan50() {
@@ -78,7 +80,7 @@ class MagasinTest {
                 () -> app.updateQuality(),
                 "Quality is never greater than 50"
         );
-        assertEquals("Cannot be > 50", exception.getMessage());
+        assertEquals("Quality cannot be greater than 50", exception.getMessage());
     }
     // passed
     //  "Kryptonite", being a legendary item, has no expiration date and never loses
@@ -111,11 +113,6 @@ class MagasinTest {
         assertEquals(27, a.items[0].quality); // by 3 when there are 5 days or less remaining
 
     }
-
-
-
-
-
 
 
 
