@@ -67,6 +67,21 @@ class MagasinTest {
 
     }
 
+    //  The quality of a product is never greater than 50.
+    @Test
+    void qualityIsNotGreaterThan50() {
+        Item[] items = new Item[] { new Item("Product", 14, 55) };
+        Magasin app = new Magasin(items);
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> app.updateQuality(),
+                "Quality is never greater than 50"
+        );
+        assertEquals("Cannot be > 50", exception.getMessage());
+    }
+
+
 
 
 
