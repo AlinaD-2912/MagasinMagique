@@ -54,6 +54,21 @@ class MagasinTest {
 
     }
 
+    // passed
+    //  The "Comté" product increases its quality over time.
+    @Test
+    void compteQuality() {
+        Item[] items = new Item[] { new Item("Comté", 14, 20) };
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        assertEquals(21, app.items[0].quality); // 20 + 1 = 21
+
+    }
+
+
+
 
 
 
