@@ -1,0 +1,5 @@
+Normal product,sellIn=9,quality=19
+Comté,sellIn=1,quality=0
+Produit Expiré,sellIn=-1,quality=8
+Kryptonite,sellIn=0,quality=50
+Pass VIP Concert,sellIn=14,quality=21
