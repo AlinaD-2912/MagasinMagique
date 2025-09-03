@@ -80,6 +80,18 @@ class MagasinTest {
         );
         assertEquals("Cannot be > 50", exception.getMessage());
     }
+    // passed
+    //  "Kryptonite", being a legendary item, has no expiration date and never loses
+    @Test
+    void kryptoniteNotLoosingQuality() {
+        Item[] items = new Item[] { new Item("Kryptonite", 14, 42) };
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        assertEquals(42, app.items[0].quality);
+    }
+
 
 
 
