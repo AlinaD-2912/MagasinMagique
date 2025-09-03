@@ -164,6 +164,19 @@ class MagasinTest {
     }
 
 
+    //  The Vine product increases its quality over time.
+    @Test
+    @DisplayName("The Vine's quality increases over time'")
+    void vineQuality() {
+        Item[] items = new Item[] { new Item("Vine", 14, 20) };
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        assertEquals(21, app.items[0].quality); // 20 + 1 = 21
+
+    }
+
 
 
 

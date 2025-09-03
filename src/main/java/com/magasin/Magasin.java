@@ -26,7 +26,8 @@ class Magasin {
 
 
             if (!items[i].name.equals("Comté")
-                    && !items[i].name.equals("Pass VIP Concert")) {
+                    && !items[i].name.equals("Pass VIP Concert")
+                    && !items[i].name.equals("Vine")) {
                 // if quality > 0
                 if (items[i].quality > 0) {
                     // if product is kryptonite
@@ -66,6 +67,7 @@ class Magasin {
             if (!items[i].name.equals("Kryptonite")) {
                 items[i].sellIn = items[i].sellIn - 1;
             }
+
 
 
 //          If product sellin less than 0
