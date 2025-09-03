@@ -92,6 +92,27 @@ class MagasinTest {
         assertEquals(42, app.items[0].quality);
     }
 
+    //passed
+    //  "Kryptonite", being a legendary item, has no expiration date and never loses
+    @Test
+    void vipPassIncreaseOfQuality() {
+        Item[] items = new Item[] { new Item("Pass VIP Concert", 10, 24) };
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        assertEquals(26, app.items[0].quality); // quality increases by 2 when there are 10 days or less remaining
+
+        Item[] it = new Item[] { new Item("Pass VIP Concert", 5, 24) };
+        Magasin a = new Magasin(it);
+
+        a.updateQuality();
+
+        assertEquals(27, a.items[0].quality); // by 3 when there are 5 days or less remaining
+
+    }
+
+
 
 
 
