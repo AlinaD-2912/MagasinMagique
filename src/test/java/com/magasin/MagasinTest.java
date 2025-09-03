@@ -37,6 +37,23 @@ class MagasinTest {
         assertEquals(-1, app.items[0].sellIn);  // 0 - 1 = -1
     }
 
+    // The quality of a product can never be negative.
+    @Test
+    void qualityCanNotBeNegative() {
+        Item[] items = new Item[] { new Item("Produit Expiré", 10, -1) };
+        Magasin app = new Magasin(items);
+
+        app.updateQuality();
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> app.updateQuality(),
+                "Negative quality should throw illegal exception but nothing was thrown"
+        );
+        assertEquals("Cannot be zero", exception.getMessage());
+
+    }
+
 
 
 
