@@ -27,7 +27,7 @@ class Magasin {
 
             if (!items[i].name.equals("Comté")
                     && !items[i].name.equals("Pass VIP Concert")
-                    && !items[i].name.equals("Vine")) {
+                    && !items[i].name.equals("Wine")) {
                 // if quality > 0
                 if (items[i].quality > 0) {
                     // if product is kryptonite

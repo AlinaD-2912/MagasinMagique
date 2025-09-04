@@ -126,7 +126,7 @@ class MagasinTest {
     }
 
     @Test
-    @DisplayName("Golden Master test without JSON")
+    @DisplayName("Golden Master test")
     void goldenMasterTest() throws IOException {
         Item[] items = new Item[] {
                 new Item("Normal product", 10, 20),
@@ -139,7 +139,7 @@ class MagasinTest {
 
         app.updateQuality();
 
-        // Convert items to string
+        // Converts items to string
         StringBuilder actual = new StringBuilder();
         for (Item item : app.items) {
             actual.append(item.name)
@@ -151,7 +151,7 @@ class MagasinTest {
         Path file = Path.of("src/test/resources/golden_master.txt");
 
         if (!Files.exists(file)) {
-            // first run: create the golden master
+            // creates the golden master
             Files.createDirectories(file.getParent()); // ensure folder exists
             Files.writeString(file, actual.toString());
             fail("Golden master created. Run test again to validate.");
@@ -166,9 +166,9 @@ class MagasinTest {
 
     //  The Vine product increases its quality over time.
     @Test
-    @DisplayName("The Vine's quality increases over time'")
+    @DisplayName("The Wine's quality increases over time'")
     void vineQuality() {
-        Item[] items = new Item[] { new Item("Vine", 14, 20) };
+        Item[] items = new Item[] { new Item("Wine", 14, 20) };
         Magasin app = new Magasin(items);
 
         app.updateQuality();
